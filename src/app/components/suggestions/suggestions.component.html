@@ -1,0 +1,48 @@
+<div class="recommendations" *ngIf="!loading">
+    <h1 class="title">OK, here is your top three</h1>
+    <div class="top-suggestions">
+        <div class="item" *ngFor="let title of this.recommendations | slice:0:3;">
+            <img class="top-poster" 
+            [src]="title.poster_path ? 'https://image.tmdb.org/t/p/original/' +title.poster_path
+            : '../assets/unavailable.png'" alt="poster">
+            <div class="information">
+                <p class="overview">{{title.overview}}</p>
+                <small><strong>Premiered: </strong>{{title.release_date ? title.release_date : title.first_air_date 
+                    ? title.first_air_date : 'Null'}}</small>
+                <small><strong>Rating: </strong>{{title.vote_average}}
+                ({{title.vote_count}} votes)
+                </small>
+            </div>
+        </div>
+    </div>
+    <div class="see-more" (click)="seeMore()">
+        <button>
+            <div class="arrow"></div>
+        </button>
+    </div>
+    <div class="other-suggestions">
+        <div class="suggestion" *ngFor="let item of this.recommendations | slice:3">
+            <img class="suggested-poster" 
+            [src]="item.poster_path ? 'https://image.tmdb.org/t/p/original/' +item.poster_path
+            : '../assets/unavailable.png'" />
+            <div class="suggested-information">
+                <p id={{item.id}}>{{item.overview}}</p>
+                <div class="suggested-subinfo">
+                    <small><strong>Premiered: </strong>{{item.release_date ? item.release_date : item.first_air_date 
+                    ? item.first_air_date : 'Null'}}</small>
+                    <small><strong>Rating: </strong>{{item.vote_average}}
+                    ({{item.vote_count}} votes)
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="done">
+    <button class="done-btn" (click)="home()">Done!</button>
+    </div>
+</div>
+<div class="loader" *ngIf="loading">
+    <div class="loading">
+        <div class="load-text">Collecting Recommendations...</div>   
+    </div>
+</div>

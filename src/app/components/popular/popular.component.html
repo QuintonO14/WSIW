@@ -1,0 +1,23 @@
+<div class="titles-container" *ngIf="!loading">
+    <h2 class="titles-title">Which of these {{results.length}} titles have you seen?</h2>
+     <div class="titles" *ngIf="{results}">
+        <figure class="item" *ngFor="let item of results; let i = index" (click)="check(item)">
+            <img class="pop-poster" src="https://image.tmdb.org/t/p/original/{{item.poster_path}}" />
+            <input type="checkbox" class="checkbox" value={{item.id}} (click)="check(item)" id={{item.id}}  />
+            <label class="check-label" for="checkbox"></label>
+        </figure>
+     </div>
+     <div class="page-controls">
+         <button class="nav" (click)="changeComponent('/genres')">
+             <fa-icon [icon]="faLeft"></fa-icon> Genres
+        </button>
+         <button class="nav" id="finished" disabled (click)="changeComponent('/suggestions')">
+            Finish <fa-icon [icon]="faRight"></fa-icon> 
+        </button>
+     </div>
+</div>
+<div class="loader" *ngIf="loading">
+    <div class="loading">
+        <div class="load-text">One moment...</div>
+    </div>
+</div>

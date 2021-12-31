@@ -1,0 +1,255 @@
+@customBlack: #020205;
+@customBlue: #111f4d;
+@customRed: #e43a19;
+@customWhite: #f2f4f7;
+@keyframes blink {
+    0% {
+        border-color: @customWhite;
+    }
+   
+    100% {
+        border-color: @customRed;
+    }
+}
+@keyframes pop {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.checkbox {
+    width: 1rem;
+    height: 1rem;
+    vertical-align: middle;
+    position: absolute;
+    visibility: hidden;
+    outline: none;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+}
+
+.checkbox:checked + label {
+    display: inline-block;
+    content: "A";
+    background-color: @customBlue;
+    border: 1px solid @customRed;
+    margin: 2%;
+    border-radius: 50%;
+}
+
+.checkbox:checked + label:after {
+    opacity: 1
+}
+
+.check-label { 
+    border-radius: 50%;
+    cursor: pointer;
+    height: 1.2rem;
+    left: 0;
+    margin: 1%;
+    position: absolute;
+    top: 0;
+    width: 1.2rem;
+}
+
+.check-label::after {
+    border: 3px solid @customRed;
+    border-top: none;
+    border-right: none;
+    content: "";
+    height: 4px;
+    left: 3px;
+    opacity: 0;
+    position: absolute;
+    top: 5px;
+    transform: rotate(
+    -45deg);
+    width: 10px;
+}
+
+#finished:disabled {
+    background-color: @customWhite;
+    color: @customBlack;
+    border: 2px solid @customRed;
+}
+
+.item {
+    background-color: @customBlue;
+    height: 16rem;
+    width: 12rem;
+    margin: 5px;
+    border: 1px solid @customWhite;
+    border-radius: 10px;
+    position: relative;
+    backface-visibility: hidden;
+}
+
+.item:hover {
+   transform: translateY(-3px);
+   border: 1px solid @customRed;
+}
+
+.item:nth-child(2n - 1) {
+    animation: pop 1s;
+    @media screen and (max-width: 420px) {
+        animation: none;
+    }
+}
+
+.item:nth-child(2n) {
+    animation: pop 2s;
+    @media screen and (max-width: 420px) {
+        animation: none;
+    }
+}
+
+.loader {
+    height: 100vh;
+    display: flex;
+    position: relative;
+    text-align: center;
+}
+
+.load-text {
+    width: 8rem;
+    position: absolute;
+    top: calc(50% - 1rem);
+    left: calc(50% - 4rem);
+    text-align: center;
+    color: white;
+}
+
+.loading {
+  padding: 50px;
+  text-align: center;
+}
+
+.loading::before {
+    content: '';
+    border: 0.2em solid @customBlack;
+    border-top: 0.2em solid @customRed;
+    border-radius: 50%;
+    height: 10rem;
+    width: 10rem;
+    margin: auto;
+    animation: spin 0.9s linear infinite;
+    position: absolute;
+    top: calc(50% - 5.5rem);
+    left: calc(50% - 5rem);
+}
+
+.nav {
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    position: relative;
+    background-color: @customRed;
+    color: @customBlack;
+    font-size: 1.2rem;
+    border: 2px solid @customWhite;
+}
+
+.nav:hover {
+    color: @customBlue;
+    background-color: @customWhite;
+    border: 2px solid @customRed;
+}
+
+.nav::before {
+    content: '';
+    display: block;
+    top: 0px;
+    left: 0px;
+    border-radius: 10px;
+    right: 0px;
+    bottom: 0px;
+    position: absolute;
+    background: linear-gradient(hsla(0, 0%, 100%, 0.3), hsla(0, 0%, 100%, 0));
+}
+
+.page-controls {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+    padding-bottom: 1rem;
+}
+
+.pop-poster {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1;
+    border-radius: 10px;
+}
+
+.title {
+    margin: 0;
+    color: @customWhite;
+    background-color: @customBlue;
+    text-align: center;
+    font-size: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-top: 1rem;
+}
+
+.titles {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.titles-container {
+    background-color: @customBlack;
+}
+
+.titles-title {
+    color: @customWhite;
+    text-align: center;
+    padding: 1rem 0;
+    margin: 0;
+    font-size: 2.2rem;
+
+    @media screen and (max-width: 420px) {
+        font-size: 1.4rem;
+        padding: 2rem 0;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .item:nth-child(1n + 1) {
+        animation: pop 2s;
+    }
+    .item:nth-child(3n + 1) {
+        animation: pop 3s;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

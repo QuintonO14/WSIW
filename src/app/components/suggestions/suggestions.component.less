@@ -1,0 +1,345 @@
+@customBlack: #020205;
+@customBlue: #111f4d;
+@customRed: #e43a19;
+@customWhite: #f2f4f7;
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes fadeIn {
+   to{
+       opacity: 1;
+       transform: translateY(0);
+   }
+}
+@keyframes slideIn {
+    0%{
+        transform: translateX(-100vw);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+@keyframes appear {
+    0%{
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.arrow {
+    border-width: 0px 2px 2px 0px;
+    border-style: solid;
+    border-color: @customBlack;
+    transform: rotate(45deg);
+    height: 1rem;
+    width: 1rem;
+    margin: auto;
+}
+
+
+.done {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.done-btn {
+    color: @customWhite;
+    border: 1px solid @customWhite;
+    background-color: @customRed;
+    padding: 1rem;
+    font-size: 2rem;
+    font-weight: bolder;
+    border-radius: 5px;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    width: 50%;
+    position: relative;
+
+    
+    @media screen and (max-width: 1024px) {
+        width: 90%;
+    }
+}
+
+.done-btn::before {
+    content: '';
+    display: block;
+    top: 0px;
+    left: 0px;
+    border-radius: 10px;
+    right: 0px;
+    bottom: 0px;
+    position: absolute;
+    background: linear-gradient(to top, hsla(0, 0%, 100%, 0.3), hsla(0, 0%, 100%, 0));
+}
+
+.done-btn:hover::before {
+    content: '';
+    display: block;
+    top: 0px;
+    left: 0px;
+    border-radius: 10px;
+    right: 0px;
+    bottom: 0px;
+    position: absolute;
+    background: linear-gradient(hsla(0, 0%, 100%, 0),hsla(10, 80%, 50%, 0.3));
+
+}
+
+.information {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    background-color: @customWhite;
+    color: @customBlack;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: stretch;
+    width: 30%;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    animation-delay: 1s;
+}
+
+.item:nth-child(1) {
+    animation-delay: 2s;
+}
+
+.item:nth-child(2) {
+    animation-delay: 3s;
+}
+.item:nth-child(3) {
+    animation-delay: 4s;
+}
+
+.loader {
+    height: 100vh;
+    display: flex;
+    position: relative;
+    text-align: center;
+}
+
+.load-text {
+    width: 8rem;
+    position: absolute;
+    top: calc(50% - 2rem);
+    left: calc(50% - 4rem);
+    text-align: center;
+    color: white;
+}
+
+.loading {
+  padding: 50px;
+  text-align: center;
+}
+
+.loading::before {
+    content: '';
+    border: 0.2em solid @customBlack;
+    border-top: 0.2em solid @customRed;
+    border-radius: 50%;
+    height: 10rem;
+    width: 10rem;
+    margin: auto;
+    animation: spin 0.9s linear infinite;
+    position: absolute;
+    top: calc(50% - 5.5rem);
+    left: calc(50% - 5rem);
+}
+
+.other-suggestions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    border-top: 1px solid @customWhite;
+}
+
+.overview {
+    margin: 0;
+    font-size: 1rem;
+    padding: 0.1rem;
+}
+
+.recommendations {
+    background-color: @customBlue;
+}
+
+.see-more {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+
+    button {
+        padding: 0.5rem;
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.1rem;
+        background-color: @customWhite;
+        border: 2px solid @customRed;
+        color: @customBlue;
+        border-radius: 50%;
+    }
+}
+
+.suggestion {
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem;
+ }
+ 
+ .suggestion:hover {
+         .suggested-information {
+             width: 100%;
+             max-height: 9999px;
+             transition: max-height 1s ease-in;
+             border: 1px solid @customRed;
+         }
+ 
+         .suggested-poster {
+             border-radius: 0px;
+             border-top-left-radius: 10px;
+             border-bottom-left-radius: 10px;
+         }
+ }
+
+ .suggested-information {
+    background-color: @customWhite;
+    max-height: 0;
+    width: 0;
+    transition: width 1s ease-out, max-height .15s ease-out;
+    text-overflow: ellipsis;
+    text-align: center;
+    overflow: hidden;
+
+    p {
+        padding: 0.5rem;
+        
+        text-overflow: clip;
+        overflow: hidden;
+    }
+
+    small {
+        font-size: 1rem;
+        padding: 1px;
+    }
+}
+
+.suggested-poster {
+    height: 16rem;
+    width: 12rem;
+    border-radius: 10px;
+    transition: border-radius 0.5s;
+
+    @media screen and (max-width: 420px) {
+        height: 12rem;
+        width: 8rem;
+    }
+}
+
+.suggested-subinfo {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.title {
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 1rem 0;
+    transform: translateX(-100vw);
+    animation: slideIn 1.5s forwards;
+}
+
+.top-suggestions {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: @customBlue;
+    color: @customWhite;
+    text-align: center;
+}
+
+.top-poster {
+    width: 95%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 2px solid @customRed;
+
+    @media screen and (max-width: 800px) {
+        width: 30%;
+        height: 50%;
+        border-right: 1px solid @customRed;
+        border-bottom: none;
+    }
+
+    @media screen and (max-width: 420px) {
+        height: 50%;
+        border-right: 1px solid @customRed;
+        border-bottom: none;
+    }
+}
+
+@media (hover: hover) {
+    .done-btn:hover {
+        background-color: @customWhite;
+        color: @customBlack;
+        border: 1px solid @customRed;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .top-suggestions {
+        flex-direction: column;
+        justify-content: stretch;
+        align-items: center;
+    }
+
+    .top-poster {
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 10px;
+    }
+
+    .item {
+        flex-direction: row;
+        width: 95%;
+        margin: 0.5rem 0;
+        align-items: normal;
+    }
+
+    .information {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        padding: 0.5rem;
+    }
+
+    .overview {
+        padding-bottom: 0.5rem;
+    }
+
+    .other-suggestions {
+        display: flex;
+        flex-direction: column;
+    }
+}
+

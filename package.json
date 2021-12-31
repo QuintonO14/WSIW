@@ -1,5 +1,5 @@
 {
-  "name": "angproj",
+  "name": "wsiw",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -14,10 +14,14 @@
     "@angular/common": "~13.0.0",
     "@angular/compiler": "~13.0.0",
     "@angular/core": "~13.0.0",
-    "@angular/forms": "~13.0.0",
     "@angular/platform-browser": "~13.0.0",
     "@angular/platform-browser-dynamic": "~13.0.0",
     "@angular/router": "~13.0.0",
+    "@fortawesome/angular-fontawesome": "^0.10.1",
+    "@fortawesome/fontawesome-svg-core": "~1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@types/lodash": "^4.14.178",
+    "lodash": "^4.17.21",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

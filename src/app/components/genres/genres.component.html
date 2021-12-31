@@ -1,0 +1,16 @@
+<div class="container">
+    <h2 class="title">Select up to 5 genres</h2>
+   <div class="genre-container">
+        <button (click)="addGenre(genre.id);" id="{{genre.id}}" class="genres" *ngFor="let genre of genres">
+            {{genre.name}}
+        </button>
+    </div>
+    <div class="navigation-buttons">
+        <button id="back" class="nav" (click)="changeComponent('')">
+            <fa-icon [icon]="faLeft"></fa-icon> Back
+        </button>
+        <button id="next" class="nav" disabled (click)="changeComponent('/popular')">
+            Next <fa-icon [icon]="faRight"></fa-icon>
+        </button>
+    </div>
+</div>
