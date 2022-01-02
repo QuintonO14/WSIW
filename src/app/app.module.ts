@@ -8,6 +8,8 @@ import { SelectionsComponent } from './components/selections/selections.componen
 import { PopularComponent } from './components/popular/popular.component';
 import { SuggestionsComponent } from './components/suggestions/suggestions.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
       {path: 'popular', component: PopularComponent},
       {path: 'suggestions', component: SuggestionsComponent}
     ]),
-    FontAwesomeModule
+    FontAwesomeModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
